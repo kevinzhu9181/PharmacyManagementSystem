@@ -1,0 +1,77 @@
+﻿@model PharmacyManagementSystem.Models.DrugModel
+
+@{
+    ViewData["Title"] = "EditDrug";
+}
+
+<h1>Edit</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditDrug">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dosage" class="control-label"></label>
+                <input asp-for="Dosage" class="form-control" />
+                <span asp-validation-for="Dosage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PackageSize" class="control-label"></label>
+                <input asp-for="PackageSize" class="form-control" />
+                <span asp-validation-for="PackageSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NetCost" class="control-label"></label>
+                <input asp-for="NetCost" class="form-control" />
+                <span asp-validation-for="NetCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ABRating" class="control-label"></label>
+                <input asp-for="ABRating" class="form-control" />
+                <span asp-validation-for="ABRating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GPI" class="control-label"></label>
+                <input asp-for="GPI" class="form-control" />
+                <span asp-validation-for="GPI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer" class="control-label"></label>
+                <input asp-for="Manufacturer" class="form-control" />
+                <span asp-validation-for="Manufacturer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ScheduleClass" class="control-label"></label>
+                <input asp-for="ScheduleClass" class="form-control" />
+                <span asp-validation-for="ScheduleClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenericName" class="control-label"></label>
+                <input asp-for="GenericName" class="form-control" />
+                <span asp-validation-for="GenericName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsGeneric" class="control-label"></label>
+                <input asp-for="IsGeneric" class="form-control" />
+                <span asp-validation-for="IsGeneric" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

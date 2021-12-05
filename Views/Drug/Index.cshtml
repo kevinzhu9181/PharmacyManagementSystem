@@ -1,0 +1,89 @@
+﻿@model IEnumerable<PharmacyManagementSystem.Models.DrugModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Drug Management</h1>
+
+<p>
+    <a asp-action="AddDrug">Create New Drug</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dosage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PackageSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NetCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ABRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GPI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GenericName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsGeneric)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dosage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NetCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ABRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GPI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleClass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenericName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsGeneric)
+            </td>
+            <td>
+                <a asp-action="EditDrug" asp-route-drugid="@item.Id">Edit</a> |
+                <a asp-action="GetDrugDetails" asp-route-drugid="@item.Id">Details</a> |
+                <a asp-action="DeleteDrug" asp-route-drugid="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
