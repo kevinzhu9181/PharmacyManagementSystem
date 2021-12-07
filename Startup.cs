@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,9 +38,14 @@ namespace PharmacyManagementSystem
             services.AddScoped<IGenericRepository<DrugModel>, GenericRepository<DrugModel>>();
             services.AddScoped<IGenericRepository<ScriptModel>, GenericRepository<ScriptModel>>();
             services.AddScoped<IGenericRepository<FillModel>, GenericRepository<FillModel>>();
+            services.AddScoped<IGenericRepository<LoginModel>, GenericRepository<LoginModel>>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddMvc().AddSessionStateTempDataProvider();
+            services.AddSession();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +67,8 @@ namespace PharmacyManagementSystem
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

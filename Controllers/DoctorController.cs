@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using PharmacyManagementSystem.Models;
 using PharmacyManagementSystem.Repositories;
 using System;
@@ -18,8 +19,16 @@ namespace PharmacyManagementSystem.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var model = _repository.GetAll();
-            return View(model);
+            var userId = HttpContext.Session.GetString("UserId");
+            if (userId != null)
+            {
+                var model = _repository.GetAll();
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
         }
         [HttpGet]
         public IActionResult AddDoctor()
