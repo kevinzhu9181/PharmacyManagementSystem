@@ -1,0 +1,49 @@
+﻿@model PharmacyManagementSystem.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <br />
+    <fieldset>
+        <legend>Login to Kevin's Pharmacy Management System</legend>
+        <br />
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+
+        <table>
+            <tr>
+                <td style="text-align: right; padding: 20px">@Html.LabelFor(user => user.UserName):</td>
+                <td style="text-align: right; padding: 20px">@Html.TextBoxFor(user => user.UserName)</td>
+                <td style="text-align: right; padding: 20px">@Html.ValidationMessageFor(user => user.UserName)</td>
+            </tr>
+            <tr>
+                <td style="text-align: right; padding: 20px">
+                    @Html.LabelFor(user => user.Password):
+                </td>
+                <td style="text-align: right; padding: 20px">
+                    @Html.PasswordFor(user => user.Password)
+                </td>
+                <td style="text-align: right; padding: 20px">
+                    @Html.ValidationMessageFor(user => user.Password)
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; padding: 20px"></td>
+                <td style="text-align: right; padding: 20px">
+                    <input type="submit" value="Login" />
+                </td>
+                <td style="text-align: right; padding: 20px"></td>
+            </tr>
+        </table>
+    </fieldset>
+}  

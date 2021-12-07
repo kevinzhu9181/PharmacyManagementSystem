@@ -15,5 +15,6 @@ namespace PharmacyManagementSystem.DataAccess
         public DbSet<DrugModel> Drug { get; set; }
         public DbSet<ScriptModel> Script { get; set; }
         public DbSet<FillModel> Fill { get; set; }
+        public DbSet<LoginModel> Login { get; set; }
     }
 }
